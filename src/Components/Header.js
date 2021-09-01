@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+// import AppBar from '@material-ui/core/AppBar';
+// import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import logo from '../Images/logo.png';
@@ -10,7 +10,7 @@ import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import Switch from '@material-ui/core/Switch';
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
 
 function CircularProgressWithLabel(props) {
     return (
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header() {
+export default function Header(props) {
   const classes = useStyles();
   const [progress, setProgress] = React.useState(10);
 
@@ -69,10 +69,10 @@ export default function Header() {
 
   return (
       <>
-      <div container style={{margin:'20px'}} >
-        <div style={{display:'flex', justifyContent:"space-between"}} >
+      <div container style={{margin:'20px', marginTop:'0px'}} >
+        <div style={{display:'flex', justifyContent:"space-evenly", flexWrap:'wrap', paddingTop:'20px', margin:'10px'}} >
             <div>
-                <a><img src={logo} alt="logo" style={{width:"250px", height:'auto'}} /></a>
+                <a href="/#" ><img src={logo} alt="logo" style={{width:"250px", height:'auto'}} /></a>
                 <p style={{color:'gray', fontFamily:'sans-serif, Oswald', margin:'0'}} >
                     Powered By 
                     <a style={{color:'rgb(61, 198, 193)', textDecoration:'none'}} href="https://www.finstreet.in" > Finstreet</a>
@@ -80,16 +80,16 @@ export default function Header() {
             </div>
             <div style={{display:'flex', padding:'5px'}} >
             <div className="dropdown" style={{marginRight:'10px'}}>
-                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style={{backgroundColor:'#f8f9fa', color:'#0c0f48', borderRadius:'10px', border:'none'}} >
-                     INR
+                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style={{backgroundColor:'#f8f9fa', color:'#0c0f48', borderRadius:'10px', border:'none', width:'75px'}} >
+                     <b>INR</b>
                  </button>
                  <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
                      <li><button className="dropdown-item" type="button">INR</button></li>
                  </ul>
                  </div>
                  <div className="dropdown" style={{marginRight:'10px'}} >
-                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style={{backgroundColor:'#f8f9fa', color:'#0c0f48', borderRadius:'10px', border:'none'}} >
-                     BTC
+                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" style={{backgroundColor:'#f8f9fa', color:'#0c0f48', borderRadius:'10px', border:'none', width:'75px'}} >
+                     <b>BTC</b>
                  </button>
                  <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
                      <li><button className="dropdown-item" type="button">BTC</button></li>
@@ -105,8 +105,8 @@ export default function Header() {
                  </div>
                  <div>
                 <a href="https://wazirx.com/invite/sp7pvbt6?utm_source=finstreet&utm_medium=affiliate&utm_campaign=regnow-btn" >
-                 <button type="button" className="btn btn-primary" style={{backgroundColor:'#f8f9fa', color:'#0c0f48', borderRadius:'10px', border:'none'}} >
-                     BUY BTC
+                 <button type="button" className="btn btn-primary" style={{backgroundColor:'#f8f9fa', color:'#0c0f48', borderRadius:'10px', border:'none', width:'75px'}} >
+                     <b>BUY BTC</b>
                  </button>
                  </a>
                  </div>
@@ -117,9 +117,10 @@ export default function Header() {
                  <CircularProgressWithLabel value={progress} />
                  <Button
                      variant="contained"
-                     style={{backgroundColor:'rgb(61, 198, 193)', color:'white', textTransform:'none', marginLeft:'10px'}}
+                     style={{backgroundColor:'rgb(61, 198, 193)', color:'white', textTransform:'none', marginLeft:'10px', borderRadius:'10px'}}
                      className={classes.button}
                      startIcon={<TelegramIcon />}
+                     disableElevation
                  >
                      Connect Telegram
                  </Button>
@@ -127,6 +128,7 @@ export default function Header() {
                      color="default"
                      style={{color:'rgb(61, 198, 193)'}}
                      inputProps={{ 'aria-label': 'checkbox with default color' }}
+                     onClick={() => props.themeToggler()}
                  />
              </div>
             </div>
